@@ -18,6 +18,7 @@ class RegisterController extends Controller
     // Handle the form submission
     public function store(Request $request)
     {
+        //test migration forget
         // 1. Validate the data (Security check)
         $validated = $request->validate([
             'name' => 'required|string|max:255',
