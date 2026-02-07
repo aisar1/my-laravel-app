@@ -34,6 +34,6 @@ class RegisterController extends Controller
         ]);
 
         // 3. Redirect somewhere (e.g., home)
-        return redirect('/')->with('success', 'Account created successfully!');
+        return redirect(route('login'))->with('success', 'Account created successfully!');
     }
 }
