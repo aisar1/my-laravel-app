@@ -18,8 +18,15 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'first_name',  // Replaces 'name'
+        'last_name',
         'email',
+        'phone',
+        'department',
+        'position',
+        'salary',
+        'joining_date',
+        'role',        // e.g., 'admin' or 'staff'
         'password',
     ];
 
@@ -43,6 +50,8 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'joining_date' => 'date',   // Cast this to a date object automatically
+            'salary' => 'decimal:2',    // Ensure salary is always treated as currency
         ];
     }
 }

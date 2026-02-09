@@ -59,12 +59,7 @@
             </button>
         </form>
 
-        <div class="mt-6 text-center text-sm text-gray-600">
-            Don't have an account? 
-            <a href="{{ route('register') }}" class="font-medium text-blue-600 hover:text-blue-500 hover:underline">
-                Create one now
-            </a>
-        </div>
+        
     </div>
 
 </body>
