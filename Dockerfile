@@ -13,12 +13,31 @@ RUN a2enmod rewrite
 # 3. Set the working directory
 WORKDIR /var/www/html
 
-# 4. Copy application files
-COPY . .
+# 4. Install System Dependencies (Required for Composer)
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    zip \
+    unzip
 
-# 5. Install Composer Dependencies
+# Clear cache to keep image small
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Install PHP extensions
+RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+
+# 5. Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-RUN composer install --no-dev --optimize-autoloader
+
+# --- FIX IS HERE ---
+# You must copy the composer files BEFORE running install
+COPY composer.json composer.lock ./
+
+# Now run the install
+RUN composer install --no-dev --optimize-autoloader --no-scripts --no-plugins
 
 # 6. Set Permissions (Crucial for 500 Errors)
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
