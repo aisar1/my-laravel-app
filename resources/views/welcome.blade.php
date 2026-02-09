@@ -19,7 +19,7 @@
                         </svg>
                     </button>
 
-                    <a href="/" class="flex items-center text-blue-600 font-bold text-xl">
+                    <a href="{{ route('homepage') }}" class="flex items-center text-blue-600 font-bold text-xl">
                         HR System
                     </a>
                 </div>
