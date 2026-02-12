@@ -7,6 +7,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LeaveController;
+use App\Http\Controllers\EventController;
+
 
 //Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -43,6 +46,20 @@ Route::middleware('auth')->group(function () {
     //reset password
     Route::get('/profile/password', [ProfileController::class, 'edit'])->name('password.edit');
     Route::put('/profile/password', [ProfileController::class, 'update'])->name('password.update');
+
+    Route::get('/leaves', [LeaveController::class, 'index'])->name('leaves.index');
+    Route::get('/leaves/create', [LeaveController::class, 'create'])->name('leaves.create');
+    Route::post('/leaves', [LeaveController::class, 'store'])->name('leaves.store');
+    
+    // Route for Admin to Approve/Reject
+    Route::patch('/leaves/{leave}/status', [LeaveController::class, 'updateStatus'])->name('leaves.status');
+
+  
+
+    Route::get('/calendar', [EventController::class, 'index'])->name('calendar.index');
+    Route::get('/calendar/events', [EventController::class, 'getEvents'])->name('calendar.events'); // API for JS
+    Route::post('/calendar/events', [EventController::class, 'store'])->name('calendar.store');
+
 });
 
 

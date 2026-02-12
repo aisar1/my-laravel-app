@@ -68,6 +68,26 @@
     <span class="font-medium">Change Password</span>
 </a>
 
+<a href="{{ route('leaves.index') }}" 
+   class="flex items-center px-4 py-2 mt-2 text-gray-600 transition-colors rounded-lg hover:bg-gray-200 hover:text-gray-700 {{ request()->routeIs('leaves.*') ? 'bg-gray-200 text-gray-700 font-semibold' : '' }}">
+   
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+    </svg>
+    
+    <span class="mx-4 font-medium">Leave Management</span>
+</a>
+
+<a href="{{ route('calendar.index') }}" 
+   class="flex items-center px-4 py-2 mt-2 text-gray-600 rounded-lg hover:bg-gray-100 transition-colors duration-200 transform {{ request()->routeIs('calendar.*') ? 'bg-blue-100 text-blue-700 font-bold' : '' }}">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+    </svg>
+
+    <span class="mx-4 font-medium">Calendar</span>
+</a>
+
 @if(auth()->user()->role === 'admin')
             <a href="{{ route('register') }}" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-100 hover:text-blue-600 rounded-lg transition-colors duration-200">
                 <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">

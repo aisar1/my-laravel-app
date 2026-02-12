@@ -54,4 +54,8 @@ class User extends Authenticatable
             'salary' => 'decimal:2',    // Ensure salary is always treated as currency
         ];
     }
+    public function getNameAttribute()
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
 }
