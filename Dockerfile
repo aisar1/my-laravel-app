@@ -59,7 +59,8 @@ COPY . .
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
 # 14. Expose Port 80
-EXPOSE 80
+RUN sed -i 's/80/${PORT}/g' /etc/apache2/sites-available/000-default.conf /etc/apache2/ports.conf
+EXPOSE ${PORT}
 
 # 15. Start Apache
 #CMD ["apache2-foreground"]
